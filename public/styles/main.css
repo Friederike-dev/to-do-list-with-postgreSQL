@@ -1,0 +1,166 @@
+html {
+  background-color: #67578f;
+  background-image: url("/assets/img/beach-7052886_1920.png");
+  background-size: 100%; 
+  background-position: top;
+  background-repeat: no-repeat; /* Verhindert, dass das Bild wiederholt wird */
+  background-blend-mode: lighten;  /* Bild mit der Hintergrundfarbe mischen */
+  min-height: 1000px;
+  font-family: "calibri", sans-serif;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  min-height: 95vh;
+}
+main {
+  text-align: center;
+  flex: 1 0 auto;
+}
+h1 {
+  color: #fff;
+  padding: 10px;
+  font-size: 1.6rem;
+}
+
+.box {
+  max-width: 400px;
+  margin: 50px auto;
+  background: white;
+  border-radius: 5px;
+  /* box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3); */
+  box-shadow: 12px 2px 25px 2px rgba(0, 0, 0, 0.4);
+}
+
+#heading, #heading2, #heading3 {
+  background-color: #a683e3;
+  text-align: center;
+}
+form.edit {
+  display: flex;
+}
+
+.item {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.item:last-child {
+  border-bottom: 0;
+}
+
+input[type="checkbox"] {
+  margin: 20px;
+  margin-left: 0;
+}
+
+p {
+  margin: 0;
+  padding: 20px 0;
+  font-size: 20px;
+  color: #00204a;
+}
+
+form {
+  text-align: center;
+  margin-left: 20px;
+}
+
+button.add {
+  min-height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border-color: transparent;
+  background-color: #a683e3;
+  color: #fff;
+  font-size: 30px;
+  border-width: 0;
+}
+
+button.edit {
+  margin-left: 0px;
+  margin-right: 20px;
+  border: none;
+  background: none;
+}
+
+.icon {
+  height: 20px;
+}
+
+input[type="text"] {
+  text-align: left;
+  height: 60px;
+  top: 10px;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  font-weight: 200;
+  width: 80%;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  box-shadow: inset 0 -3px 0 0 #a683e3;
+}
+
+::placeholder {
+  color: lightgray;
+  opacity: 1;
+}
+
+footer {
+  flex: 0 0 auto;
+  text-align: center;
+}
+footer p {
+  color: white;
+  margin: 8px 0px 0px 0px; 
+  /* der erste Wert ist der Abstand von oben, der zweite von rechts, der dritte von unten und der vierte von links */
+  padding: 0;
+}
+
+footer a {
+  color: #f88a5f;
+}
+
+
+
+
+
+
+
+/* Wrapper für die Container */
+#containerWrapper {
+  display: flex;
+  flex-wrap: wrap; /* Ermöglicht das Umbrechen der Container bei kleineren Bildschirmbreiten */
+  gap: 20px; /* Abstand zwischen den Containern */
+  justify-content: center; /* Zentriert die Container horizontal */
+  margin: 20px;
+}
+
+/* Einzelne Container */
+.container {
+  flex: 1 1 calc(33.33% - 20px); /* Jeder Container nimmt 1/3 der Breite ein, mit Abstand */
+  min-width: 280px; /* Mindestbreite für kleinere Bildschirme */
+  /*background-color: #fff;  Beispielhintergrund */
+  /*border: 1px solid #ccc;  Beispielrahmen */
+  /* border-radius: 8px; */
+  /* padding: 10px; */
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+}
+
+/* Überschriften in den Containern */
+.container h1 {
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    flex: 1 1 100%; /* Container nehmen die gesamte Breite ein */
+  }
+}

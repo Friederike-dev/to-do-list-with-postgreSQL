@@ -1,0 +1,135 @@
+<%- include('partials/header.ejs'); -%>
+
+<div id="containerWrapper">
+
+
+<div id="firstContainer" class="container">
+  <div class="box" id="heading">
+    <h1>
+      <%= listTitle %>
+    </h1>
+  </div>
+  <div class="box">
+    <% for(let item of listItems){%>
+      <div class="item">
+        <form action="/delete" method="post">
+          <input type="checkbox" onchange="this.form.submit()" name="deleteItemId" value="<%= item.id %>">
+        </form>
+
+        <p id="title1<%=item.id%>">
+          <%= item.title %>
+        </p>
+        <form class="edit" action="/edit" method="post">
+          <input type="hidden" name="tableName" value="items">
+          <input type="hidden" name="updatedItemId" value="<%= item.id %>">
+          <input id="input1<%=item.id%>" type="text" name="updatedItemTitle" value="<%= item.title %>" autocomplete="off"
+            autofocus="true" hidden="true" />
+          <button id="done1<%=item.id%>" class="edit" type="submit" hidden><img class="icon"
+              src="/assets/icons/check-solid.svg" alt="tick image"></button>
+        </form>
+        <button id="edit1<%=item.id%>" class="edit" onclick="handler('<%=item.id%>', '1')"><img class="icon"
+            src="/assets/icons/pencil-solid.svg" alt="pencil image"></button>
+      </div>
+      <% } %>
+
+        <form class="item" action="/add" method="post">
+          <input type="hidden" name="tableName" value="items">
+          <input type="text" name="newItem" placeholder="New Item" autocomplete="off" autofocus="true" />
+          <button class="add" type="submit" name="list" value=<%=listTitle %> >+</button>
+        </form>
+  </div>
+</div>
+
+
+ <!-- Second Container -->
+ <div id="secondContainer" class="container">
+  <div class="box" id="heading2">
+    <h1>This Week</h1>
+  </div>
+  <div class="box">
+    <% for(let item of weeklistItems){%>
+      <div class="item">
+        <form action="/delete" method="post">
+          <input type="checkbox" onchange="this.form.submit()" name="deleteItemIdWeek" value="<%= item.id %>">
+        </form>
+
+        <p id="title2<%=item.id%>">
+          <%= item.title %>
+        </p>
+
+        <form class="edit" action="/edit" method="post">
+          <input type="hidden" name="tableName" value="items_week">
+          <input type="hidden" name="updatedItemId" value="<%= item.id %>">
+          <input id="input2<%=item.id%>" type="text" name="updatedItemTitle" value="<%= item.title %>" autocomplete="off"
+            autofocus="true" hidden="true" />
+          <button id="done2<%=item.id%>" class="edit" type="submit" hidden><img class="icon"
+              src="/assets/icons/check-solid.svg" alt="tick image"></button>
+        </form>
+        <button id="edit2<%=item.id%>" class="edit" onclick="handler('<%=item.id%>', '2')"><img class="icon"
+            src="/assets/icons/pencil-solid.svg" alt="pencil image"></button>
+      </div>
+      <% } %>
+
+        <form class="item" action="/add" method="post">
+          <input type="hidden" name="tableName" value="items_week">
+          <input type="text" name="newItem" placeholder="New Item" autocomplete="off" autofocus="true" />
+          <button class="add" type="submit" name="list" value=<%=weeklistTitle %> >+</button>
+        </form>
+  </div>
+</div>
+
+
+<!-- Third Container -->
+<div id="thirdContainer" class="container">
+  <div class="box" id="heading3">
+    <h1>This Month</h1>
+  </div>
+  
+  <div class="box">
+    <% for(let item of monthlistItems){%>
+      <div class="item">
+        <form action="/delete" method="post">
+          <input type="checkbox" onchange="this.form.submit()" name="deleteItemIdMonth" value="<%= item.id %>">
+        </form>
+
+        <p id="title3<%=item.id%>">
+          <%= item.title %>
+        </p>
+        <form class="edit" action="/edit" method="post">
+          <input type="hidden" name="tableName" value="items_month">
+          <input type="hidden" name="updatedItemId" value="<%= item.id %>">
+          <input id="input3<%=item.id%>" type="text" name="updatedItemTitle" value="<%= item.title %>" autocomplete="off"
+            autofocus="true" hidden="true" />
+          <button id="done3<%=item.id%>" class="edit" type="submit" hidden><img class="icon"
+              src="/assets/icons/check-solid.svg" alt="tick image"></button>
+        </form>
+        <button id="edit3<%=item.id%>" class="edit" onclick="handler('<%=item.id%>', '3')"><img class="icon"
+            src="/assets/icons/pencil-solid.svg" alt="pencil image"></button>
+      </div>
+      <% } %>
+
+        <form class="item" action="/add" method="post">
+          <input type="hidden" name="tableName" value="items_month">
+          <input type="text" name="newItem" placeholder="New Item" autocomplete="off" autofocus="true" />
+          <button class="add" type="submit" name="list" value=<%=monthlistTitle %> >+</button>
+        </form>
+  </div>
+
+</div>
+</div>
+</div>
+
+  <script>
+   function handler(id, section) {
+  const title = document.getElementById("title" + section + id);
+  const edit = document.getElementById("edit" + section + id);
+  const done = document.getElementById("done" + section + id);
+  const input = document.getElementById("input" + section + id);
+
+  if (title) title.setAttribute("hidden", true);
+  if (edit) edit.setAttribute("hidden", true);
+  if (done) done.removeAttribute("hidden");
+  if (input) input.removeAttribute("hidden");
+}
+  </script>
+  <%- include('partials/footer.ejs'); -%>
